@@ -106,6 +106,7 @@ public class ContainerExtension implements BeforeAllCallback, AfterAllCallback {
     Optional.ofNullable(started.rabbit).ifPresent(GenericContainer::stop);
     Optional.ofNullable(started.mongo).ifPresent(GenericContainer::stop);
     Optional.ofNullable(started.mysql).ifPresent(GenericContainer::stop);
+    Optional.ofNullable(started.postgres).ifPresent(GenericContainer::stop);
   }
 
 }
