@@ -1,4 +1,4 @@
-package com.shahinkhalajestani.dynamictestcontainersextention.sample;
+package com.shahinkhalajestani.dynamic.testcontainers.extension.sample;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

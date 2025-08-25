@@ -1,4 +1,4 @@
-package com.shahinkhalajestani.dynamictestcontainersextention;
+package com.shahinkhalajestani.dynamic.testcontainers.extension;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package com.shahinkhalajestani.dynamictestcontainersextention.sample;
+package com.shahinkhalajestani.dynamic.testcontainers.extension.sample;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

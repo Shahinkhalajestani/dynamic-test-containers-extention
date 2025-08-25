@@ -1,6 +1,6 @@
-package com.shahinkhalajestani.dynamictestcontainersextention.base;
+package com.shahinkhalajestani.dynamic.testcontainers.extension.base;
 
-import com.shahinkhalajestani.dynamictestcontainersextention.util.ContainerType;
+import com.shahinkhalajestani.dynamic.testcontainers.extension.util.ContainerType;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

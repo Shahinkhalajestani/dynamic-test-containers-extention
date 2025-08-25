@@ -1,6 +1,6 @@
-package com.shahinkhalajestani.dynamictestcontainersextention.base;
+package com.shahinkhalajestani.dynamic.testcontainers.extension.base;
 
-import com.shahinkhalajestani.dynamictestcontainersextention.util.ContainerType;
+import com.shahinkhalajestani.dynamic.testcontainers.extension.util.ContainerType;
 import org.junit.jupiter.api.extension.*;
 import org.junit.jupiter.api.extension.ExtensionContext.Namespace;
 import org.testcontainers.containers.*;

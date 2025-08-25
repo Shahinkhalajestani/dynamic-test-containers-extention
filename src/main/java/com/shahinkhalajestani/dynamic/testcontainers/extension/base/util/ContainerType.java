@@ -1,4 +1,4 @@
-package com.shahinkhalajestani.dynamictestcontainersextention.util;
+package com.shahinkhalajestani.dynamic.testcontainers.extension.base.util;
 
 public enum ContainerType {
 
