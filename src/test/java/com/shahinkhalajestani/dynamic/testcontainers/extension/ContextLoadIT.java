@@ -2,7 +2,7 @@ package com.shahinkhalajestani.dynamic.testcontainers.extension;
 
 import com.shahinkhalajestani.dynamic.testcontainers.extension.base.ContainerExtension;
 import com.shahinkhalajestani.dynamic.testcontainers.extension.base.UseContainers;
-import com.shahinkhalajestani.dynamic.testcontainers.extension.util.ContainerType;
+import com.shahinkhalajestani.dynamic.testcontainers.extension.base.util.ContainerType;
 import javax.sql.DataSource;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

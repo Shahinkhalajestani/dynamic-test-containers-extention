@@ -1,6 +1,6 @@
 package com.shahinkhalajestani.dynamic.testcontainers.extension.base;
 
-import com.shahinkhalajestani.dynamic.testcontainers.extension.util.ContainerType;
+import com.shahinkhalajestani.dynamic.testcontainers.extension.base.util.ContainerType;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -12,6 +12,7 @@ public @interface UseContainers {
   ContainerType[] value() default {};
   boolean reuse() default false;
   String mysqlImage() default "mysql:8.4";
+  String postgresImage() default "postgres:15";
   String mongoImage() default "mongo:7";
   String rabbitImage() default "rabbitmq:3.13-management";
 }

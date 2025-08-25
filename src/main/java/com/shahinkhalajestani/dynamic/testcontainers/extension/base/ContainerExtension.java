@@ -1,6 +1,7 @@
 package com.shahinkhalajestani.dynamic.testcontainers.extension.base;
 
-import com.shahinkhalajestani.dynamic.testcontainers.extension.util.ContainerType;
+import com.shahinkhalajestani.dynamic.testcontainers.extension.base.util.ContainerType;
+import java.time.Duration;
 import org.junit.jupiter.api.extension.*;
 import org.junit.jupiter.api.extension.ExtensionContext.Namespace;
 import org.testcontainers.containers.*;
@@ -12,6 +13,7 @@ public class ContainerExtension implements BeforeAllCallback, AfterAllCallback {
 
   private static class Started {
     MySQLContainer<?> mysql;
+    PostgreSQLContainer<?> postgres;
     MongoDBContainer mongo;
     GenericContainer<?> redis;
     RabbitMQContainer rabbit;
@@ -34,7 +36,12 @@ public class ContainerExtension implements BeforeAllCallback, AfterAllCallback {
       started.mysql = new MySQLContainer<>(DockerImageName.parse(spec.mysqlImage()))
           .withDatabaseName("test")
           .withUsername("test")
-          .withPassword("test");
+          .withPassword("test")
+          .withEnv("MYSQL_ROOT_HOST", "%")
+          .withCommand("--default-authentication-plugin=mysql_native_password",
+              "--skip-ssl",
+              "--disable-log-bin")
+          .withStartupTimeout(Duration.ofMinutes(5));;
       if (reuse) started.mysql.withReuse(true);
       started.mysql.start();
 
@@ -43,6 +50,25 @@ public class ContainerExtension implements BeforeAllCallback, AfterAllCallback {
       System.setProperty("spring.datasource.username", started.mysql.getUsername());
       System.setProperty("spring.datasource.password", started.mysql.getPassword());
       System.setProperty("spring.datasource.driver-class-name", "com.mysql.cj.jdbc.Driver");
+      // Prevent Boot from swapping to an embedded test DB
+      System.setProperty("spring.test.database.replace", "NONE");
+    }
+
+    if (requested.contains(ContainerType.POSTGRES)) {
+      started.postgres = new PostgreSQLContainer<>(DockerImageName.parse(spec.postgresImage()))
+          .withDatabaseName("test")
+          .withUsername("test")
+          .withPassword("test")
+          .withStartupTimeout(Duration.ofMinutes(5));
+
+      if (reuse) started.postgres.withReuse(true);
+      started.postgres.start();
+
+      // Spring DataSource properties for PostgreSQL
+      System.setProperty("spring.datasource.url", started.postgres.getJdbcUrl());
+      System.setProperty("spring.datasource.username", started.postgres.getUsername());
+      System.setProperty("spring.datasource.password", started.postgres.getPassword());
+      System.setProperty("spring.datasource.driver-class-name", "org.postgresql.Driver");
       // Prevent Boot from swapping to an embedded test DB
       System.setProperty("spring.test.database.replace", "NONE");
     }
